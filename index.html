@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexandria's Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
 </head>
 <body>
     <div class="header">
@@ -26,17 +26,23 @@
             
             <label for="read-status">Did you read it?</label>
             <input type="checkbox" name="read-status" id="read-status">
-            
-
         
-        
+            <button type="button" class="add-to-library" id="add-to-library">Add book</button>
+    
         </form>
     </div>
     
     <div class="books-container">
 
+        <div class="book-tile">
+            <div class="tile-title">Mystery Island</div>
+            <div class="tile-author">Jules Verne</div>
+            <div class="tile-pages">283</div>
+            <div class="tile-status">Read</div>
+        </div>
+
     </div>
-    
+
     <div class="books-submitted">
 
     </div>
