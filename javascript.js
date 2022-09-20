@@ -12,7 +12,7 @@ btn_add_book.addEventListener('click',function(){
     let book_pages_input = document.querySelector('#no-pages').value;
     let book_read_status = document.querySelector('#read-status');   
 
-    let newBook = new Book(book_name_input2,"me","232",false);
+    let newBook = new Book(book_name_input2,book_author_input,book_pages_input,book_read_status);
 
     myLibrary.push(newBook);
     
@@ -36,18 +36,53 @@ function Book(title, author, pages, readStatus, info){
 
 function addBookToLibrary(){
 
-    const book_tile_div = document.createElement('div');
-    book_tile_div.classList.add('book-tile');
+    for(let i = 0; i < myLibrary.length; i++){
+        
+        const book_tile_div = document.createElement('div');
+        book_tile_div.classList.add('book-tile');
+        books_container.appendChild(book_tile_div);
 
-    const book_title_div = document.createElement('div');
-    book_title_div.classList.add('tile-title');
-    book_title_div.textContent = "Book.title";
-    
-    book_tile_div.appendChild(book_title_div);
+        const book_title_div = document.createElement('div');
+        book_title_div.classList.add('tile-title');
+        book_title_div.textContent = myLibrary[i].title;
+        book_tile_div.appendChild(book_title_div);
 
+        const book_author_div = document.createElement('div');
+        book_author_div.classList.add('tile-author');
+        book_author_div.textContent = myLibrary[i].author;
+        book_tile_div.appendChild(book_author_div);
 
-    books_container.appendChild(book_tile_div);
-    
+        const book_no_pages_div = document.createElement('div');
+        book_no_pages_div.classList.add('tile-pages');
+        book_no_pages_div.textContent = myLibrary[i].pages;
+        book_tile_div.appendChild(book_no_pages_div);
+
+        const book_status_div = document.createElement('div');
+        book_status_div.classList.add('tile-status');
+        book_status_div.textContent = myLibrary[i].readStatus;
+        book_tile_div.appendChild(book_status_div);
+
+    }
+
 }
 
-let Book1 = new Book("Me", "You","232",true)
+function loopArray(){
+
+    console.log(myLibrary.length);
+    for(let i = 0; i < myLibrary.length; i++){
+        
+        const book_tile_div = document.createElement('div');
+        book_tile_div.classList.add('book-tile');
+    
+        const book_title_div = document.createElement('div');
+        book_title_div.classList.add('tile-title');
+        book_title_div.textContent = myLibrary[i].title;
+        book_tile_div.appendChild(book_title_div);
+    
+        const book_author_div = document.createElement('div');
+        book_author_div.classList.add('tile-author');
+
+    }
+
+
+}
