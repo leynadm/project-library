@@ -1,13 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+
 body {
+    font-family: 'Macondo', cursive;
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr;
-    grid-template-rows: 1fr 9fr;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: auto 9fr;
     min-height:100vh;
     min-width: 100vh;
 }
 
 .header{
     grid-column: 1/4;
+}
+
+.header-title{
+    font-size: 6rem;
+    text-align: center;
 }
 
 form{
@@ -17,13 +25,31 @@ form{
 
 .books-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit,  minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill,  minmax(250px, 1fr));
 }
 
-.book-tile{
+.book{
+    display: grid;
+    height: 400px;
+    width: auto;
     text-align: center;
     align-items: center;
-    display: grid;
-    height: auto;
     margin: 1rem;
+    background-color: brown;
+    border-radius: 20px 16px 12px 32px;
+}
+
+.book:after{
+    content: ""; 
+    box-sizing: inherit; 
+    height: 52px;
+    border-radius: 10px 10px 10px 10px;
+    width: auto;
+    background: white;
+    background-image: linear-gradient(to bottom, transparent 6px, #E4E0CE 8px, transparent 8px, transparent 12px, #E4E0CE 12px, transparent 14px, transparent 18px,#E4E0CE 18px, transparent 20px, transparent 24px, #E4E0CE 24px, transparent 26px, transparent 30px, #E4E0CE 30px, transparent 32px, transparent 36px, #E4E0CE 36px, transparent 38px, transparent 42px, #E4E0CE 42px, transparent 44px, transparent 48px, #E4E0CE 48px, transparent 50px);     
+  }
+
+.tile-buttons{
+    display: flex;
+    justify-content:space-evenly;
 }
