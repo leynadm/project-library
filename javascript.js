@@ -1,11 +1,14 @@
 // Page elements
 const btn_add_book = document.getElementById('add-to-library');
 const books_container = document.querySelector('.books-container');
+let bookOrderInArrayCounter = 0;
 
 let myLibraryNewBooks=[];
 
 /* Event listener on the button that allows to add new books */
-btn_add_book.addEventListener('click',function(){
+btn_add_book.addEventListener('click',getBookFromUser)
+
+function getBookFromUser(){
 
     let book_name_input = document.querySelector('#book-name').value;
     let book_author_input = document.querySelector('#author-name').value;
@@ -18,7 +21,7 @@ btn_add_book.addEventListener('click',function(){
 
     addBook(book_name_input,book_author_input,book_pages_input,book_read_status);
 
-})
+}
 
 /* Function to create new HTML elements and add them to DOM */
 function addBook(bookName,bookAuthor,bookPages,bookStatus){
@@ -26,10 +29,16 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
     const book_tile_div = document.createElement('div');
     book_tile_div.classList.add('book-tile');
     books_container.appendChild(book_tile_div);
-
+    
     const book_div = document.createElement('div');
     book_div.classList.add('book');
     book_tile_div.appendChild(book_div);
+
+    const book_unique_index = document.createElement('div');
+    book_unique_index.classList.add('unique-index');
+    book_unique_index.textContent = bookOrderInArrayCounter;
+    book_div.appendChild(book_unique_index);
+    bookOrderInArrayCounter++;
 
     const book_title_div = document.createElement('div');
     book_title_div.classList.add('tile-title');
@@ -75,11 +84,15 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
  
 }
 
-
 /* Function to remove book from page*/
 function removeBook(e){
     const tile_buttons_to_remove = this.parentNode.parentNode;
+    let book_index = tile_buttons_to_remove.querySelector('.unique-index');
+    console.log(book_index.textContent);
     tile_buttons_to_remove.remove();
+
+    delete myLibraryNewBooks[book_index.textContent];
+
 }
 
 /* Function to change status of book*/

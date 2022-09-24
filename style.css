@@ -53,3 +53,7 @@ form{
     display: flex;
     justify-content:space-evenly;
 }
+
+.unique-index{
+    display: none;
+}
