@@ -20,10 +20,6 @@ btn_add_book.addEventListener('click',function(){
 
 })
 
-
-/* Function to remove book from page*/
-
-
 /* Function to create new HTML elements and add them to DOM */
 function addBook(bookName,bookAuthor,bookPages,bookStatus){
     
@@ -52,7 +48,13 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
 
     const book_status_div = document.createElement('div');
     book_status_div.classList.add('tile-status');
-    book_status_div.textContent = bookStatus;
+    
+    if(bookStatus.checked){
+        book_status_div.textContent = "Read";    
+    } else {    
+        book_status_div.textContent = "Not Read"
+    }
+    
     book_div.appendChild(book_status_div);
 
     const book_tile_buttons = document.createElement('div');
@@ -73,22 +75,25 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
  
 }
 
+
+/* Function to remove book from page*/
 function removeBook(e){
     const tile_buttons_to_remove = this.parentNode.parentNode;
     tile_buttons_to_remove.remove();
 }
 
+/* Function to change status of book*/
 function changeStatus(e){
+    const book_tile_selected = this.parentNode.parentNode;
+    let book_div_selected = book_tile_selected.querySelector('.book');
+    let status_div_selected = book_div_selected.querySelector('.tile-status');
 
+    if(status_div_selected.textContent == "Read"){
+        status_div_selected.textContent = "Not Read";
+    } else {
+        status_div_selected.textContent = "Read";
+    }
 }
-
-function addEventListenersToButtons(){
-
-    
-
-}
-
-
 
 /* Constructor for creating new books*/
 function Book(title, author, pages, readStatus, info){
@@ -101,41 +106,3 @@ function Book(title, author, pages, readStatus, info){
         return info;   
     }
 }
-
-function removeBookFromLibrary(){
-
-}
-
-/* This loop is not needed but it was part of the written assignment
-
-function addBookToLibrary(){
-
-    for(let i = 0; i < myLibraryNewBooks.length; i++){
-        
-        const book_tile_div = document.createElement('div');
-        book_tile_div.classList.add('book-tile');
-        books_container.appendChild(book_tile_div);
-
-        const book_title_div = document.createElement('div');
-        book_title_div.classList.add('tile-title');
-        book_title_div.textContent = myLibraryNewBooks[i].title;
-        book_tile_div.appendChild(book_title_div);
-
-        const book_author_div = document.createElement('div');
-        book_author_div.classList.add('tile-author');
-        book_author_div.textContent = myLibraryNewBooks[i].author;
-        book_tile_div.appendChild(book_author_div);
-
-        const book_no_pages_div = document.createElement('div');
-        book_no_pages_div.classList.add('tile-pages');
-        book_no_pages_div.textContent = myLibraryNewBooks[i].pages;
-        book_tile_div.appendChild(book_no_pages_div);
-
-        const book_status_div = document.createElement('div');
-        book_status_div.classList.add('tile-status');
-        book_status_div.textContent = myLibraryNewBooks[i].readStatus;
-        book_tile_div.appendChild(book_status_div);
-
-    }
-} */
-
