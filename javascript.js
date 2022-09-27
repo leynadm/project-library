@@ -80,6 +80,7 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
     span_remove_book.textContent = "delete";
     book_remove_btn.appendChild(span_remove_book);
 
+    /*
     const book_status_btn = document.createElement('button');
     book_status_btn.addEventListener('click',changeStatus);
     book_status_btn.classList.add('tile-status-book','page-button');
@@ -88,7 +89,25 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
     const span_read_status = document.createElement('span');
     span_read_status.classList.add('material-symbols-outlined')
     span_read_status.textContent = "menu_book";
-    book_status_btn.appendChild(span_read_status);
+    book_status_btn.appendChild(span_read_status); */
+
+
+    const book_status_lbl = document.createElement('label');
+    book_status_lbl.classList.add('toggle');
+    book_status_lbl.addEventListener('click',changeStatus);
+    book_tile_buttons.appendChild(book_status_lbl);
+    const book_status_cbx = document.createElement('input');
+    book_status_cbx.type = 'checkbox';
+    book_status_cbx.classList.add('toggle__input');
+    book_status_lbl.appendChild(book_status_cbx);
+    const book_div_status = document.createElement('div');
+    book_div_status.classList.add('toggle__fill');
+    book_status_lbl.appendChild(book_div_status);
+    if(bookStatus.checked){
+        book_status_cbx.checked = true;
+    } else{
+        book_status_cbx.checked = false;
+    }
     
 }
 
@@ -105,15 +124,30 @@ function removeBook(e){
 
 /* Function to change status of book*/
 function changeStatus(e){
-    const book_tile_selected = this.parentNode.parentNode;
+    const book_tile_selected = this.parentNode.parentNode;    
+    console.log(book_tile_selected);
     let book_div_selected = book_tile_selected.querySelector('.book');
+    console.log(book_div_selected);
     let status_div_selected = book_div_selected.querySelector('.tile-status');
+    console.log(status_div_selected);
+    const lbl_read = this.childNodes;
+    const cbx_read = lbl_read.item(0);
+    console.log(cbx_read.checked);
 
+    if(cbx_read.checked){
+        console.log(cbx_read.checked);
+
+        status_div_selected.textContent="Read"
+    } else{
+        console.log(cbx_read.checked)
+        status_div_selected.textContent="Not Read"
+    }
+    /*
     if(status_div_selected.textContent == "Read"){
         status_div_selected.textContent = "Not Read";
     } else {
         status_div_selected.textContent = "Read";
-    }
+    }*/
 }
 
 /* Constructor for creating new books*/
