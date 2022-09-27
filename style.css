@@ -1,31 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bebas+Neue&family=Fjalla+One&family=Julius+Sans+One&family=Luckiest+Guy&family=Macondo&display=swap');
 
 body {
-    font-family: 'Macondo', cursive;
+    font-family: 'Amatic SC', cursive;
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-    grid-template-rows: auto 9fr;
-    min-height:100vh;
-    min-width: 100vh;
+    grid-template-columns: 1.5fr 5fr 1.5fr;
+    grid-template-rows: auto 8fr;
+    min-height:98vh;
 }
 
-.header{
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #483d8b;
+    font-size: 1.25rem;
+    font-family: 'Amatic SC', cursive;
+    background: transparent;
+}
+
+.header {
     grid-column: 1/4;
+    box-shadow: 0 4px 1px #6ee7b7;
 }
 
-.header-title{
-    font-size: 6rem;
+.submit-menu {
+    grid-row: 2/3;
+    margin: 4px;
+}
+
+.header-title {
     text-align: center;
+    font-size: 6rem;
 }
 
-form{
+form
+{
     display: flex;
     flex-direction: column;
+    display: grid;
+    padding: 8px;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
-.books-container{
+.material-symbols-outlined{
+    padding: 4px;
+}
+
+.page-button{
+    background-color: #483d8b;
+    color: white;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-to-library{
+    margin-top: 1rem;
+}
+
+.submit-menu-title{
+    text-align: center;
+    font-size:2.5rem;
+    font-weight: bold;
+}
+
+.book-submitted-title{
+    text-align: center;
+    font-size:2.5rem;
+    font-weight: bold;
+}
+
+.books-container {
     display: grid;
     grid-template-columns: repeat(auto-fill,  minmax(250px, 1fr));
+    background-color: #ffe6e6;
+    margin: 4px;
+}
+
+.books-submitted {
+    margin: 4px;
+}
+
+button{
+    border: none;
 }
 
 .book{
@@ -35,8 +93,8 @@ form{
     text-align: center;
     align-items: center;
     margin: 1rem;
-    background-color: brown;
-    border-radius: 20px 16px 12px 32px;
+    background-color: silver;
+    //border-radius: 20px 16px 12px 32px;
 }
 
 .book:after{
@@ -56,4 +114,48 @@ form{
 
 .unique-index{
     display: none;
+}
+
+.toggle {
+    --width: 50px;
+    --height: calc(var(--width)/2);
+    --border-radius: calc(var(--height)/2);
+
+    display: inline-block;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+.toggle__input:checked ~ .toggle__fill {
+    background-color: #009578;
+}
+
+.toggle__input {
+    display: none;
+}
+
+.toggle__fill {
+    position: relative;
+    width: var(--width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background:grey;
+    transition: background 0.2s;
+}
+
+.toggle__fill::after{
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    height: var(--height);
+    width: var(--height);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25); 
+    border-radius: var(--border-radius);
+    transition: transform 0.2s;
+}
+
+.toggle__input:checked ~ .toggle__fill::after {
+    transform: translateX(var(--height));
 }

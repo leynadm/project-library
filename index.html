@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexandria's Library</title>
+    <title>The House of Wisdom</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="javascript.js" defer></script>
 </head>
 <body>
     <div class="header">
-        <div class="header-title">Alexandria's Library</div>
-
+        <div class="header-title">The House of Wisdom</div>
     </div>
     
     <div class="submit-menu">
+        <div class="submit-menu-title">Add your book here</div>
         <form name="submit-data" method="post">
             <label for="book-name">Book Name</label>
             <input type="text" name="book-name" id="book-name">
@@ -25,22 +26,25 @@
             <label for="no-pages">Number of Pages</label>
             <input type="number" name="no-pages" id="no-pages">
             
-            <label for="read-status">Did you read it?</label>
-            <input type="checkbox" name="read-status" id="read-status">
-        
-            <button type="button" class="add-to-library" id="add-to-library">Add book</button>
-    
+            <label for="read-status" class="toggle">
+                <input type="checkbox" class="toggle__input" name="read-status" id="read-status">
+                <div class="toggle__fill"></div>
+            </label>
+            
+            <button type="button" class="add-to-library page-button" id="add-to-library">
+                <span class="material-symbols-outlined">library_add</span>
+                <div>Add Book</div>
+            </button>
+            
         </form>
     </div>
     
     <div class="books-container">
-
-
-        
     </div>
 
     <div class="books-submitted">
-
+        <div class="book-submitted-title">Your books history</div>
     </div>
+
 </body>
 </html>

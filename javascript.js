@@ -72,16 +72,24 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
 
     const book_remove_btn = document.createElement('button');
     book_remove_btn.addEventListener('click',removeBook);
-    book_remove_btn.classList.add('tile-remove-book');
+    book_remove_btn.classList.add('tile-remove-book','page-button');
     book_remove_btn.textContent="Remove";
     book_tile_buttons.appendChild(book_remove_btn);    
+    const span_remove_book = document.createElement('span');
+    span_remove_book.classList.add('material-symbols-outlined')
+    span_remove_book.textContent = "delete";
+    book_remove_btn.appendChild(span_remove_book);
 
     const book_status_btn = document.createElement('button');
     book_status_btn.addEventListener('click',changeStatus);
-    book_status_btn.classList.add('tile-status-book');
+    book_status_btn.classList.add('tile-status-book','page-button');
     book_status_btn.textContent="Status";
     book_tile_buttons.appendChild(book_status_btn);
- 
+    const span_read_status = document.createElement('span');
+    span_read_status.classList.add('material-symbols-outlined')
+    span_read_status.textContent = "menu_book";
+    book_status_btn.appendChild(span_read_status);
+    
 }
 
 /* Function to remove book from page*/
@@ -118,4 +126,8 @@ function Book(title, author, pages, readStatus, info){
         info = title + " by " + author + ", " + pages + ", " + readStatus;
         return info;   
     }
+}
+
+function addBookToHistory(){
+
 }
