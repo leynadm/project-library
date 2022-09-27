@@ -21,6 +21,7 @@ function getBookFromUser(){
 
     addBook(book_name_input,book_author_input,book_pages_input,book_read_status);
 
+    addBookToHistory(book_name_input,book_author_input);
 }
 
 /* Function to create new HTML elements and add them to DOM */
@@ -80,18 +81,6 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
     span_remove_book.textContent = "delete";
     book_remove_btn.appendChild(span_remove_book);
 
-    /*
-    const book_status_btn = document.createElement('button');
-    book_status_btn.addEventListener('click',changeStatus);
-    book_status_btn.classList.add('tile-status-book','page-button');
-    book_status_btn.textContent="Status";
-    book_tile_buttons.appendChild(book_status_btn);
-    const span_read_status = document.createElement('span');
-    span_read_status.classList.add('material-symbols-outlined')
-    span_read_status.textContent = "menu_book";
-    book_status_btn.appendChild(span_read_status); */
-
-
     const book_status_lbl = document.createElement('label');
     book_status_lbl.classList.add('toggle');
     book_status_lbl.addEventListener('click',changeStatus);
@@ -103,6 +92,7 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
     const book_div_status = document.createElement('div');
     book_div_status.classList.add('toggle__fill');
     book_status_lbl.appendChild(book_div_status);
+
     if(bookStatus.checked){
         book_status_cbx.checked = true;
     } else{
@@ -142,12 +132,7 @@ function changeStatus(e){
         console.log(cbx_read.checked)
         status_div_selected.textContent="Not Read"
     }
-    /*
-    if(status_div_selected.textContent == "Read"){
-        status_div_selected.textContent = "Not Read";
-    } else {
-        status_div_selected.textContent = "Read";
-    }*/
+
 }
 
 /* Constructor for creating new books*/
@@ -162,6 +147,13 @@ function Book(title, author, pages, readStatus, info){
     }
 }
 
-function addBookToHistory(){
+function addBookToHistory(bookTitle,bookAuthor){
+
+    const books_submitted_section = document.querySelector('.books-submitted');
+    console.log(books_submitted_section);
+    let newParagraph = document.createElement('p');
+    newParagraph.textContent = "You added " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to your library." 
+    console.log(newParagraph);
+    books_submitted_section.appendChild(newParagraph);
 
 }
