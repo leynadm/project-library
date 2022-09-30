@@ -132,7 +132,7 @@ button{
 }
 
 .toggle__input {
-    //display: none;
+    display: none;
 }
 
 .toggle__fill {

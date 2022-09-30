@@ -106,15 +106,22 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
 /* Function to remove book from page*/
 function removeBook(e){
 
+    let book_tile_selected = this.parentNode.parentNode.parentNode;    
+    let book_div_selected = book_tile_selected.querySelector('.book');
+    
+    let status_div_selected = book_div_selected.querySelector('.tile-status');
+    let title_div_selected = book_div_selected.querySelector('.tile-title').textContent;
+    let author_div_selected = book_div_selected.querySelector('.tile-author').textContent;
+
     const tile_buttons_to_remove = this.parentNode.parentNode;
     let book_index = tile_buttons_to_remove.querySelector('.unique-index');
     console.log(book_index.textContent);
     tile_buttons_to_remove.remove();
-
-    delete myLibraryNewBooks[book_index.textContent];
     
     addBookToHistory(title_div_selected,author_div_selected,"Remove")
 
+    delete myLibraryNewBooks[book_index.textContent];
+  
 }
 
 // Function to change status of book
@@ -122,17 +129,16 @@ function removeBook(e){
 
 function changeStatus(e){
 
-    const book_tile_selected = this.parentNode.parentNode.parentNode;    
+    let book_tile_selected = this.parentNode.parentNode.parentNode;    
     let book_div_selected = book_tile_selected.querySelector('.book');
-    console.log(book_div_selected);
-
+    
     let status_div_selected = book_div_selected.querySelector('.tile-status');
     let title_div_selected = book_div_selected.querySelector('.tile-title').textContent;
     let author_div_selected = book_div_selected.querySelector('.tile-author').textContent;
 
-    const lbl_read = book_tile_selected.childNodes;
-    const child_read = lbl_read.item(1);
-    const cbx_read = child_read.querySelector('.toggle__input');
+    let lbl_read = book_tile_selected.childNodes;
+    let child_read = lbl_read.item(1);
+    let cbx_read = child_read.querySelector('.toggle__input');
 
 
     if(cbx_read.checked){
@@ -163,12 +169,30 @@ function addBookToHistory(bookTitle,bookAuthor,UpdateType){
     const books_submitted_section = document.querySelector('.books-submitted');
     let newParagraph = document.createElement('p');
     if(UpdateType=="New"){
-        newParagraph.textContent = "You added " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to your library." 
+        newParagraph.textContent = getCurrentDate() + " - You added " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to your library." 
     } else if (UpdateType=="Remove"){
-        newParagraph.textContent = "You removed " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " from your library." 
+        newParagraph.textContent = getCurrentDate() + " - You removed " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " from your library." 
     } else {
-        newParagraph.textContent = "You changed the read status of " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to " + UpdateType + "."
+        newParagraph.textContent = getCurrentDate() + " - You changed the read status of " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to " + UpdateType + "."
     }
 
     books_submitted_section.appendChild(newParagraph);
+}
+
+
+function getCurrentDate(){
+
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let getHour = date.getHours();
+    let getMinutes = date.getMinutes();
+
+    // This arrangement can be altered based on how we want the date's format to appear.
+    let currentDate = `${day}-${month}-${year} at ${getHour}:${getMinutes}`;
+
+    return currentDate;
+
 }
