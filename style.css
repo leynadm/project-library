@@ -76,11 +76,13 @@ form
     grid-template-columns: repeat(auto-fill,  minmax(250px, 1fr));
     background-color: #ffe6e6;
     margin: 4px;
+
 }
 
 .books-submitted {
     margin: 4px;
     font-size: 1.25rem;
+    font-weight: bold;
 }
 
 button{
@@ -94,19 +96,17 @@ button{
     text-align: center;
     align-items: center;
     margin: 1rem;
-    background-color: silver;
-    //border-radius: 20px 16px 12px 32px;
+    border-radius: 0 5px 5px 0px;
+    box-shadow: 5px 6px 4px gray;
+    background: linear-gradient(to right, 
+    transparent 5%, 
+    transparent calc(5% - 0.81px), 
+    lightblue calc(5% - 0.8px), 
+    lightblue calc(5% + 0.8px), 
+    transparent calc(5% + 0.81px), 
+    transparent 100%); 
+    background-color: #005f69;
 }
-
-.book:after{
-    content: ""; 
-    box-sizing: inherit; 
-    height: 52px;
-    border-radius: 10px 10px 10px 10px;
-    width: auto;
-    background: white;
-    background-image: linear-gradient(to bottom, transparent 6px, #E4E0CE 8px, transparent 8px, transparent 12px, #E4E0CE 12px, transparent 14px, transparent 18px,#E4E0CE 18px, transparent 20px, transparent 24px, #E4E0CE 24px, transparent 26px, transparent 30px, #E4E0CE 30px, transparent 32px, transparent 36px, #E4E0CE 36px, transparent 38px, transparent 42px, #E4E0CE 42px, transparent 44px, transparent 48px, #E4E0CE 48px, transparent 50px);     
-  }
 
 .tile-buttons{
     display: flex;
@@ -132,7 +132,7 @@ button{
 }
 
 .toggle__input {
-    display: none;
+    //display: none;
 }
 
 .toggle__fill {

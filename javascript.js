@@ -21,7 +21,7 @@ function getBookFromUser(){
 
     addBook(book_name_input,book_author_input,book_pages_input,book_read_status);
 
-    addBookToHistory(book_name_input,book_author_input);
+    addBookToHistory(book_name_input,book_author_input,"New");
 }
 
 /* Function to create new HTML elements and add them to DOM */
@@ -83,7 +83,6 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
 
     const book_status_lbl = document.createElement('label');
     book_status_lbl.classList.add('toggle');
-    book_status_lbl.addEventListener('click',changeStatus);
     book_tile_buttons.appendChild(book_status_lbl);
     const book_status_cbx = document.createElement('input');
     book_status_cbx.type = 'checkbox';
@@ -92,6 +91,9 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
     const book_div_status = document.createElement('div');
     book_div_status.classList.add('toggle__fill');
     book_status_lbl.appendChild(book_div_status);
+    //book_status_lbl.addEventListener('click',changeStatus);
+    book_div_status.addEventListener('click',changeStatus);
+    
 
     if(bookStatus.checked){
         book_status_cbx.checked = true;
@@ -103,37 +105,45 @@ function addBook(bookName,bookAuthor,bookPages,bookStatus){
 
 /* Function to remove book from page*/
 function removeBook(e){
+
     const tile_buttons_to_remove = this.parentNode.parentNode;
     let book_index = tile_buttons_to_remove.querySelector('.unique-index');
     console.log(book_index.textContent);
     tile_buttons_to_remove.remove();
 
     delete myLibraryNewBooks[book_index.textContent];
+    
+    addBookToHistory(title_div_selected,author_div_selected,"Remove")
 
 }
 
-/* Function to change status of book*/
+// Function to change status of book
+
+
 function changeStatus(e){
-    const book_tile_selected = this.parentNode.parentNode;    
-    console.log(book_tile_selected);
+
+    const book_tile_selected = this.parentNode.parentNode.parentNode;    
     let book_div_selected = book_tile_selected.querySelector('.book');
     console.log(book_div_selected);
+
     let status_div_selected = book_div_selected.querySelector('.tile-status');
-    console.log(status_div_selected);
-    const lbl_read = this.childNodes;
-    const cbx_read = lbl_read.item(0);
-    console.log(cbx_read.checked);
+    let title_div_selected = book_div_selected.querySelector('.tile-title').textContent;
+    let author_div_selected = book_div_selected.querySelector('.tile-author').textContent;
+
+    const lbl_read = book_tile_selected.childNodes;
+    const child_read = lbl_read.item(1);
+    const cbx_read = child_read.querySelector('.toggle__input');
+
 
     if(cbx_read.checked){
-        console.log(cbx_read.checked);
-
-        status_div_selected.textContent="Read"
-    } else{
-        console.log(cbx_read.checked)
         status_div_selected.textContent="Not Read"
+    } else{
+        status_div_selected.textContent="Read"
     }
 
-}
+    addBookToHistory(title_div_selected,author_div_selected,status_div_selected.textContent)
+} 
+
 
 /* Constructor for creating new books*/
 function Book(title, author, pages, readStatus, info){
@@ -147,13 +157,18 @@ function Book(title, author, pages, readStatus, info){
     }
 }
 
-function addBookToHistory(bookTitle,bookAuthor){
+function addBookToHistory(bookTitle,bookAuthor,UpdateType){
 
+    //add Timestamp in front of the line
     const books_submitted_section = document.querySelector('.books-submitted');
-    console.log(books_submitted_section);
     let newParagraph = document.createElement('p');
-    newParagraph.textContent = "You added " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to your library." 
-    console.log(newParagraph);
-    books_submitted_section.appendChild(newParagraph);
+    if(UpdateType=="New"){
+        newParagraph.textContent = "You added " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to your library." 
+    } else if (UpdateType=="Remove"){
+        newParagraph.textContent = "You removed " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " from your library." 
+    } else {
+        newParagraph.textContent = "You changed the read status of " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to " + UpdateType + "."
+    }
 
+    books_submitted_section.appendChild(newParagraph);
 }
