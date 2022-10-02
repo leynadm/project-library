@@ -6,7 +6,13 @@ let bookOrderInArrayCounter = 0;
 let myLibraryNewBooks=[];
 
 /* Event listener on the button that allows to add new books */
+
+/* This is to be run only after I connected the site to a datasource
+btn_add_book.querySelector('form').addEventListener('click',getBookFromUser)
+*/
+
 btn_add_book.addEventListener('click',getBookFromUser)
+
 
 function getBookFromUser(){
 
@@ -167,16 +173,18 @@ function addBookToHistory(bookTitle,bookAuthor,UpdateType){
 
     //add Timestamp in front of the line
     const books_submitted_section = document.querySelector('.books-submitted');
+    const books_submitted_title = document.querySelector('.book-submitted-title');
+    const empty_child = document.querySelector('.empty-child');
     let newParagraph = document.createElement('p');
     if(UpdateType=="New"){
         newParagraph.textContent = getCurrentDate() + " - You added " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to your library." 
     } else if (UpdateType=="Remove"){
         newParagraph.textContent = getCurrentDate() + " - You removed " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " from your library." 
     } else {
-        newParagraph.textContent = getCurrentDate() + " - You changed the read status of " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to " + UpdateType + "."
+        newParagraph.textContent = getCurrentDate() + " - You changed the status of " + "'" + bookTitle +"'" + " written by " + "'" +bookAuthor +"'" + " to " + UpdateType + "."
     }
 
-    books_submitted_section.appendChild(newParagraph);
+    empty_child.prepend(newParagraph);
 }
 
 
@@ -196,3 +204,15 @@ function getCurrentDate(){
     return currentDate;
 
 }
+
+const modal = document.querySelector('.modal');
+const openModal = document.querySelector('.info-button');
+const closeModal = document.querySelector('.close-modal');
+
+openModal.addEventListener('click', () => {
+    modal.showModal();
+})
+
+closeModal.addEventListener('click', () => {
+    modal.close();
+})

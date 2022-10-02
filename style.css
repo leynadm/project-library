@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Bebas+Neue&family=Fjalla+One&family=Julius+Sans+One&family=Luckiest+Guy&family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Archivo+Narrow&family=Barlow+Condensed&family=Bebas+Neue&family=Fjalla+One&family=Julius+Sans+One&family=Luckiest+Guy&family=Macondo&family=Noto+Sans:wght@300;400&display=swap');
 
 body {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+
     font-family: 'Amatic SC', cursive;
     display: grid;
     grid-template-columns: 1.5fr 5fr 1.5fr;
     grid-template-rows: auto 8fr;
-    min-height:98vh;
+    //min-height:98vh;
 }
 
 input {
@@ -13,13 +18,15 @@ input {
     border-width: 0 0 2px;
     border-color: #483d8b;
     font-size: 1.25rem;
-    font-family: 'Amatic SC', cursive;
+    font-family: 'Barlow Condensed', sans-serif;
     background: transparent;
+
 }
 
 .header {
     grid-column: 1/4;
     box-shadow: 0 4px 1px #6ee7b7;
+    text-align: center;
 }
 
 .submit-menu {
@@ -28,8 +35,11 @@ input {
 }
 
 .header-title {
-    text-align: center;
     font-size: 6rem;
+}
+
+.secondary-title{
+    font-size:1.5rem;
 }
 
 form
@@ -47,6 +57,7 @@ form
 }
 
 .page-button{
+    font-family: 'Barlow Condensed', sans-serif;
     background-color: #483d8b;
     color: white;
     display: flex;
@@ -90,6 +101,7 @@ button{
 }
 
 .book{
+    color: white;
     display: grid;
     height: 400px;
     width: auto;
@@ -124,7 +136,6 @@ button{
 
     display: inline-block;
     cursor: pointer;
-    margin: 0.5rem;
 }
 
 .toggle__input:checked ~ .toggle__fill {
@@ -159,4 +170,56 @@ button{
 
 .toggle__input:checked ~ .toggle__fill::after {
     transform: translateX(var(--height));
+}
+
+.info-button{
+    display: flex;
+    justify-content: center;
+}
+
+
+.modal {   
+    max-width: 150ch;
+    border: 0;
+    box-shadow: 0 0 1em rgb(0 0 0 / .3);
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+.modal p{
+    height: auto;
+    margin: 0.5rem 0.5rem 0 0;
+}
+
+.modal-header-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header-row h4{
+    height: auto;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.modal::backdrop {
+    background: rgb(0 0 0 / .4);
+}
+
+.tile-title {
+    font-size: 2.5rem;
+    padding: 1rem;
+}
+
+.tile-author {
+    font-size: 1.75rem;
+}
+
+.tile-status{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.tile-pages{
+    font-size: 1.5rem;
 }

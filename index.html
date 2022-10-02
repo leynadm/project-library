@@ -12,38 +12,52 @@
 <body>
     <div class="header">
         <div class="header-title">The House of Wisdom</div>
+        <div class="secondary-title">Live every day of your life, learn every other</div>
     </div>
     
     <div class="submit-menu">
         <div class="submit-menu-title">Add your book here</div>
         <form name="submit-data" method="post">
             <label for="book-name">Book Name</label>
-            <input type="text" name="book-name" id="book-name">
+            <input type="text" name="book-name" id="book-name" tabindex="1" required>
             
             <label for="author-name">Author Name</label>
-            <input type="text" name="author-name" id="author-name">
+            <input type="text" name="author-name" id="author-name" tabindex="2" required>
             
             <label for="no-pages">Number of Pages</label>
-            <input type="number" name="no-pages" id="no-pages">
-            
-            <label class="toggle">
+            <input type="number" name="no-pages" id="no-pages" tabindex="3" required>
+                
+            <label class="toggle">Read Status 
                 <input type="checkbox" class="toggle__input" name="read-status" id="read-status">
-                <div class="toggle__fill"></div>
+                <div class="toggle__fill" tabindex="4"></div>
             </label>
 
-            <button type="button" class="add-to-library page-button" id="add-to-library">
+            <button type="button" class="add-to-library page-button" id="add-to-library" tabindex="5">
                 <span class="material-symbols-outlined">library_add</span>
                 <div>Add Book</div>
             </button>
             
         </form>
+        
+        <div class="info-button"><span class="material-symbols-outlined">info</span></div>
+        
     </div>
     
     <div class="books-container">
     </div>
 
+    <dialog class="modal">
+        <div class="modal-header-row">
+            <h4>Library Project</h4>
+            <span class="material-symbols-outlined close-modal">close</span>    
+        </div>
+        <p>This is a small Library App, where you can add new books, delete old ones, change status of your books to read/unread and see your library statistics.</p>
+        <p>Built by Daniel Matei</p>
+    </dialog>
+
     <div class="books-submitted">
         <div class="book-submitted-title">Your books history</div>
+        <p class="empty-child"></p>
     </div>
 
 </body>
