@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Archivo+Narrow&family=Barlow+Condensed&family=Bebas+Neue&family=Fjalla+One&family=Julius+Sans+One&family=Luckiest+Guy&family=Macondo&family=Noto+Sans:wght@300;400&display=swap');
 
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
     top: 0;
     position: absolute;
 
@@ -10,7 +17,6 @@ body {
     display: grid;
     grid-template-columns: 1.5fr 5fr 1.5fr;
     grid-template-rows: auto 8fr;
-    //min-height:98vh;
 }
 
 input {
