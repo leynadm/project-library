@@ -157,7 +157,7 @@ function changeStatus(e){
 } 
 
 
-/* Constructor for creating new books*/
+/* Constructor for creating new books
 function Book(title, author, pages, readStatus, info){
     this.title= title
     this.author= author
@@ -166,6 +166,19 @@ function Book(title, author, pages, readStatus, info){
     this.info = function(info){
         info = title + " by " + author + ", " + pages + ", " + readStatus;
         return info;   
+    }
+}*/
+
+class Book{
+    constructor(title, author, pages, readStatus){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
+
+    info(info){
+        this.info = this.title + " by " + this.author + ", " + this.pages + ", " + this.readStatus;
     }
 }
 
