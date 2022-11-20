@@ -229,3 +229,14 @@ button{
 .tile-pages{
     font-size: 1.5rem;
 }
+
+input:invalid:required {
+    background-image: linear-gradient(to right, lightblue, lightblue);
+  }
+
+.error{
+    font-size: smaller;
+    font-style: italic;
+    color: red;
+    font-weight: bold;
+}

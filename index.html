@@ -17,18 +17,21 @@
     
     <div class="submit-menu">
         <div class="submit-menu-title">Add your book here</div>
-        <form name="submit-data" method="post">
+        <form name="submit-data" novalidate>
             <label for="book-name">Book Name</label>
             <input type="text" name="book-name" id="book-name" tabindex="1" required>
-            
+            <span class="error" aria-live="polite"></span>
+
             <label for="author-name">Author Name</label>
-            <input type="text" name="author-name" id="author-name" tabindex="2" required>
+            <input type="text" name="author-name" id="author-name" tabindex="2" required minlength="1">
+            <span class="error" aria-live="polite"></span>
             
             <label for="no-pages">Number of Pages</label>
             <input type="number" name="no-pages" id="no-pages" tabindex="3" required>
+            <span class="error" aria-live="polite"></span>
                 
             <label class="toggle">Read Status 
-                <input type="checkbox" class="toggle__input" name="read-status" id="read-status">
+                <input type="checkbox" class="toggle__input" name="read-status" id="read-status" required>
                 <div class="toggle__fill" tabindex="4"></div>
             </label>
 

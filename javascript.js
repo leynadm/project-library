@@ -1,4 +1,5 @@
 // Page elements
+
 const btn_add_book = document.getElementById('add-to-library');
 const books_container = document.querySelector('.books-container');
 let bookOrderInArrayCounter = 0;
@@ -11,8 +12,69 @@ let myLibraryNewBooks=[];
 btn_add_book.querySelector('form').addEventListener('click',getBookFromUser)
 */
 
-btn_add_book.addEventListener('click',getBookFromUser)
+function handleAddBookButton() {
+    
+    
+    if(applyValidation()=="successful"){
 
+       getBookFromUser();
+    
+    }
+}
+
+let book_name_input = document.querySelector('#book-name');
+let book_name_input_error = document.querySelector("#book-name+span.error");
+let book_author_input = document.querySelector('#author-name');
+let book_author_input_error = document.querySelector("#author-name+span.error");
+let book_pages_input = document.querySelector('#no-pages');
+let book_pages_input_error = document.querySelector('#no-pages+span.error');
+let book_read_status = document.querySelector('#read-status');   
+
+book_name_input.addEventListener("input",(event)=>{
+    console.log("user is typing")
+    book_name_input.validity.required
+    /* 
+    if (book_name_input.validity.valueMissing) {
+        book_name_input_error.textContent = "You need to enter a title"
+    } */
+})
+
+
+function applyValidation(){
+    
+    if(book_name_input.validity.valueMissing){
+        book_name_input_error.textContent = "You need to enter a title";
+        return "fail"
+    }else if(!book_name_input.validity.valueMissing){
+        book_name_input_error.textContent = "";
+    }
+
+    if(book_author_input.validity.valueMissing){
+        book_author_input_error.textContent = "You need to enter an author name";
+        return "fail"
+    } else if(!book_author_input.validity.valueMissing){
+        book_author_input_error.textContent = "";
+    }
+            
+    if(book_pages_input.validity.valueMissing){
+        book_pages_input_error.textContent = "You need to enter the pages number";
+        return "fail"
+    } else {
+        book_pages_input_error.textContent = "";
+    }
+
+    if (
+      !book_name_input.validity.valueMissing &&
+      !book_name_input.validity.valueMissing &&
+      !book_pages_input_error.valueMissing
+    ) {
+      return "successful";
+    } else {
+      return "fail";
+    }
+}
+
+btn_add_book.addEventListener('click',handleAddBookButton);
 
 function getBookFromUser(){
 
@@ -28,6 +90,7 @@ function getBookFromUser(){
     addBook(book_name_input,book_author_input,book_pages_input,book_read_status);
 
     addBookToHistory(book_name_input,book_author_input,"New");
+
 }
 
 /* Function to create new HTML elements and add them to DOM */
